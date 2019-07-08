@@ -7,22 +7,24 @@ class UI {
         this.icon = document.getElementById('w-icon');
         this.details = document.getElementById('w-details');
         this.humidity = document.getElementById('w-humidity');
-        this.pressure = document.getElementById('w-pressure');
-        this.temp = document.getElementById('w-temp');
+        this.lowTemp = document.getElementById('w-low-temp');
+        this.highTemp = document.getElementById('w-high-temp');
         this.wind = document.getElementById('w-wind');
-        this.visibility = document.getElementById('w-visibility');
+        this.windDirection = document.getElementById('w-wind-direction');
+        this.pressure = document.getElementById('w-pressure');
+       
     }
 
     inject(weather) {
         this.location.textContent = weather.name;
-        this.desc.textContent = weather.weather[0].description.toUpperCase();
-        //store icon image in variable to concat with url below
-        const iconImg = weather.weather[0].icon;
-        this.icon.setAttribute('src', 'http://openweathermap.org/img/w/' + iconImg + '.png');
-        this.humidity.textContent = `Humidity: ${weather.main.humidity}`;
-        this.pressure.textContent = `Pressure: ${weather.main.pressure}`;
-        this.temp.textContent = `Temperature: ${weather.main.temp}`;
-        this.wind.textContent = `Wind: ${weather.wind.speed}`;
-        this.visibility.textContent = `Visibility: ${weather.visibility}`;
+        this.desc.textContent = weather.weather[0].main;
+        this.string.textContent = weather.main.temp + ' ºF';
+        this.icon.setAttribute('src', `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
+        this.humidity.textContent = `Current Humidity: ${weather.main.humidity} %`;
+        this.lowTemp.textContent = `Low Temp Of: ${weather.main.temp_min} ºF`
+        this.highTemp.textContent = `High Temp Of:  ${weather.main.temp_max}  ºF`;
+        this.wind.textContent = `Wind: ${weather.wind.speed} mph`
+        this.windDirection.textContent = `Wind Direction: ${weather.wind.deg}º`
+        this.pressure.textContent = `Atmospheric Pressure: ${weather.main.pressure} inches `
     }
 }
