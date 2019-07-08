@@ -1,10 +1,9 @@
 // create weather class with constructor
 class Weather {
-    constructor(city, state) {
+    constructor(city) {
         // obfuscated api key since no server side code for application
         this.apiKey = 'd6b2870c9be0861074154b4b86f1f700';
         this.city = city;
-        this.state = state;
     }
 
     // fetch weather from API
@@ -19,8 +18,7 @@ class Weather {
     }
 
     // change weather location
-    changeLocation(city, state) {
+    changeLocation(city) {
         this.city = city;
-        this.state = state;
     }
 }

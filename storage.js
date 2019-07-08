@@ -1,13 +1,11 @@
-// create storage class to store city/state location in local browser storage
+// create class Storage
 class Storage {
-    constructor() {
+    constructor(city) {
         this.city;
-        this.state;
         this.defaultCity = 'Denver';
-        this.defaultState = 'CO';
     }
 
-    // get location data assign defaults if nothing is in storage
+    // get location data
     getLocationData() {
         if(localStorage.getItem('city') === null) {
             this.city = this.defaultCity;
@@ -15,23 +13,12 @@ class Storage {
             this.city = localStorage.getItem('city');
         }
 
-        // same logic for state
-        if(localStorage.getItem('state') === null) {
-            this.city = this.defaultState;
-        } else {
-            this.city = localStorage.getItem('state')
-        }
-
-        //return results from function
         return {
-            city: this.city,
-            state: this.state
+            city: this.city
         }
     }
 
-    // set location data to either the defaults or the values present in local storage
-    setLocationData(city, state) {
-        localStorage.setItem('city', city);
-        localStorage.setItem('state', state);
+    setLocationData(city) {
+        localStorage.setItem('city', city)
     }
 }
